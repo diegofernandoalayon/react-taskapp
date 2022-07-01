@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function TaskForm () {
+export default function TaskForm ({ createNewTask }) {
   const [newTaskName, setNewTaskName] = useState('')
 
   const handleChange = (e) => {
@@ -9,6 +9,7 @@ export default function TaskForm () {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    createNewTask(newTaskName)
     window.localStorage.setItem('newTaskName', JSON.stringify(newTaskName))
     setNewTaskName('')
   }
