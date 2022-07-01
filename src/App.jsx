@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import TaskForm from './components/TaskForm'
-import TaskTable from './components/TaskForm/TaskTable'
+import TaskTable from './components/TaskTable'
+import VisibilityControl from './components/VisibilityControl'
 
 function App () {
   const [taskItems, setTaskItems] = useState([])
@@ -21,6 +22,10 @@ function App () {
       taskItems.map(t => (t.name === task.name) ? { ...t, done: !t.done } : t)
     )
   }
+  const cleanTask = () => {
+    setTaskItems(taskItems.filter(task => !task.done))
+  }
+
   // inicializar estado
   useEffect(() => {
     const data = window.localStorage.getItem('taskItems')
@@ -33,19 +38,27 @@ function App () {
   useEffect(() => {
     window.localStorage.setItem('taskItems', JSON.stringify(taskItems))
   }, [taskItems])
-  console.log(showCompleted)
+
   return (
     <div className='App'>
-      <TaskForm createNewTask={createNewTask} />
-      <TaskTable taskItems={taskItems} toggleTask={toggleTask} />
-      <div>
-        <label>
-          <input type='checkbox' onChange={() => setShowCompleted(a => !a)} />
-          Show Tasks Done
-        </label>
-      </div>
-      <button onClick={() => setShowCompleted((a) => !a)}> Show completed</button>
-      {showCompleted && <TaskTable taskItems={taskItems} toggleTask={toggleTask} showCompleted />}
+      <TaskForm
+        createNewTask={createNewTask}
+      />
+      <TaskTable
+        taskItems={taskItems}
+        toggleTask={toggleTask}
+      />
+      <VisibilityControl
+        setShowCompleted={setShowCompleted}
+        cleanTask={cleanTask}
+      />
+      {
+        showCompleted && <TaskTable
+          taskItems={taskItems}
+          toggleTask={toggleTask}
+          showCompleted
+                         />
+      }
     </div>
   )
 }

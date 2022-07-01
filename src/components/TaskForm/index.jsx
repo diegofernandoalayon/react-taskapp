@@ -16,7 +16,6 @@ export default function TaskForm ({ createNewTask }) {
     <form onSubmit={handleSubmit}>
       <input type='text' placeholder='Enter a new task' onChange={handleChange} value={newTaskName} />
       <button>Save Task</button>
-      <h1>{newTaskName}</h1>
     </form>
   )
 }
