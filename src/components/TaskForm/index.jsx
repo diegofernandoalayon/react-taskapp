@@ -10,7 +10,6 @@ export default function TaskForm ({ createNewTask }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     createNewTask(newTaskName)
-    window.localStorage.setItem('newTaskName', JSON.stringify(newTaskName))
     setNewTaskName('')
   }
   return (

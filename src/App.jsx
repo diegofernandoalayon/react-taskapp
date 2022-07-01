@@ -1,14 +1,10 @@
 // React
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import TaskForm from './components/TaskForm'
 
 function App () {
-  const [taskItems, setTaskItems] = useState([
-    { name: 'mi primer tarea', done: false },
-    { name: 'mi segunda tarea', done: true },
-    { name: 'mi tercer tarea', done: false }
-  ])
+  const [taskItems, setTaskItems] = useState([])
 
   const createNewTask = (taskName) => {
     const val = taskItems.find((task) => task.name === taskName)
@@ -17,6 +13,18 @@ function App () {
       setTaskItems((actualTasks) => [...actualTasks, newTask])
     }
   }
+  useEffect(() => {
+    const data = window.localStorage.getItem('taskItems')
+    if (data) {
+      setTaskItems(JSON.parse(data))
+    }
+  }, [])
+
+  // guardar datos en localStorage
+  useEffect(() => {
+    window.localStorage.setItem('taskItems', JSON.stringify(taskItems))
+  }, [taskItems])
+
   return (
     <div className='App'>
       <TaskForm createNewTask={createNewTask} />
