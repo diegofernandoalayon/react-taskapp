@@ -40,7 +40,7 @@ function App () {
   }, [taskItems])
 
   return (
-    <div className='App'>
+    <div className='bg-background'>
       <TaskForm
         createNewTask={createNewTask}
       />
