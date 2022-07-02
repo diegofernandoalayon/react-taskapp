@@ -1,6 +1,5 @@
 function VisibilityControl ({ setShowCompleted, cleanTask }) {
   const handleDelete = () => {
-    console.log('handleDelete')
     if (window.confirm('Are you sure you want to delete it?')) {
       cleanTask()
       setShowCompleted(false)
@@ -8,12 +7,12 @@ function VisibilityControl ({ setShowCompleted, cleanTask }) {
   }
   return (
     <>
-      <div>
+      <div className='bg-gray-400 flex justify-evenly py-2'>
         <label>
           <input type='checkbox' onChange={() => setShowCompleted(a => !a)} />
           Show Tasks Done
         </label>
-        <button onClick={handleDelete}>Clear</button>
+        <button className="bg-[#FF0000] hover:bg-red-600 text-white rounded-md px-2" onClick={handleDelete}>Clear</button>
       </div>
     </>
 

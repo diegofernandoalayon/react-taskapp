@@ -5,19 +5,20 @@ export default function TaskTable ({ taskItems, toggleTask, showCompleted = fals
     return (
       taskItems
         .filter(task => task.done === doneValue)
-        .map(task => (
+        .map((task, index) => (
           <TaskRow
             key={task.name}
             taskItem={task}
             toggleTask={toggleTask}
+            index={index}
           />
         ))
     )
   }
   return (
     <>
-      <table>
-        <thead>
+      <table className='w-full'>
+        <thead className='bg-emerald-600 text-white'>
           <tr>
             <th>Tasks</th>
           </tr>

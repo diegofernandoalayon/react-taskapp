@@ -40,26 +40,28 @@ function App () {
   }, [taskItems])
 
   return (
-    <div className='bg-background'>
-      <TaskForm
-        createNewTask={createNewTask}
-      />
-      <TaskTable
-        taskItems={taskItems}
-        toggleTask={toggleTask}
-      />
-      <VisibilityControl
-        setShowCompleted={setShowCompleted}
-        cleanTask={cleanTask}
-      />
-      {
-        showCompleted && <TaskTable
+    <section className='bg-gradient-to-b from-midnight to-background  flex flex-col items-center place-content-center h-screen' >
+      <article className='max-w-md overflow-y-scroll scrollbar scrollbar-thumb-violet-500 '>
+        <TaskForm
+          createNewTask={createNewTask}
+        />
+        <TaskTable
           taskItems={taskItems}
           toggleTask={toggleTask}
-          showCompleted
-                         />
-      }
-    </div>
+        />
+        <VisibilityControl
+          setShowCompleted={setShowCompleted}
+          cleanTask={cleanTask}
+        />
+        {
+          showCompleted && <TaskTable
+            taskItems={taskItems}
+            toggleTask={toggleTask}
+            showCompleted
+                          />
+        }
+      </article>
+    </section>
   )
 }
 
