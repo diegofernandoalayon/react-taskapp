@@ -6,9 +6,11 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "gh-pages": "^4.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
