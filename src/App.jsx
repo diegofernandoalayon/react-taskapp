@@ -41,20 +41,23 @@ function App () {
 
   return (
     <section className='bg-gradient-to-b from-midnight to-background  flex flex-col items-center place-content-center h-screen' >
-      <article className='max-w-md overflow-y-scroll scrollbar scrollbar-thumb-violet-500 '>
+      <article className='w-full  sm:max-w-md overflow-y-scroll scrollbar scrollbar-thumb-violet-500 '>
         <TaskForm
           createNewTask={createNewTask}
         />
         <TaskTable
+          title = 'Tasks'
           taskItems={taskItems}
           toggleTask={toggleTask}
         />
         <VisibilityControl
           setShowCompleted={setShowCompleted}
+          showCompleted={showCompleted}
           cleanTask={cleanTask}
         />
         {
           showCompleted && <TaskTable
+            title='Tasks completed'
             taskItems={taskItems}
             toggleTask={toggleTask}
             showCompleted

@@ -1,6 +1,6 @@
 import TaskRow from '../TaskRow'
 
-export default function TaskTable ({ taskItems, toggleTask, showCompleted = false }) {
+export default function TaskTable ({ title, taskItems, toggleTask, showCompleted = false }) {
   const taskTableRows = (doneValue) => {
     return (
       taskItems
@@ -18,9 +18,9 @@ export default function TaskTable ({ taskItems, toggleTask, showCompleted = fals
   return (
     <>
       <table className='w-full'>
-        <thead className='bg-emerald-600 text-white'>
+        <thead className='bg-orange-200 text-black'>
           <tr>
-            <th>Tasks</th>
+            <th>{title}</th>
           </tr>
         </thead>
         <tbody>
