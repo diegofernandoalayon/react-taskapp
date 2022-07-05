@@ -6,7 +6,7 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "cypress:open": "cypress open",
+    "cypress:open": "cypress open --browser chrome --e2e",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
